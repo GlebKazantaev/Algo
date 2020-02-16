@@ -1,24 +1,26 @@
+#pragma once
+
 #include <vector>
 
 class DSU {
 private:
     std::vector<int> p;
 public:
-    DSU(int size) {
+    explicit DSU(const int & size) {
         p.resize(size);
         for(int i = 0; i < size; ++i) {
             p[i] = i;
         }
     }
 
-    int find(int v) {
+    int find(const int & v) {
         if(p[v] == v) {
             return v;
         }
         return p[v] = find(p[v]);
     }
 
-    void merge(int a, int b) {
+    void merge(const int & a, const int & b) {
         int _a = find(a);
         int _b = find(b);
         if(_a != _b) {
